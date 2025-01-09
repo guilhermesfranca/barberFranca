@@ -1,94 +1,55 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
+import Logo from "/public/logo2.png";
+import Sign from "/public/sign.png";
+import { BsMoon, BsSun } from "react-icons/bs";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [tema, setTema] = useState(false);
+  const darkMode = styles.darkMode;
+  const lightMode = styles.lightMode;
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  function alterarTema() {
+    setTema(!tema);
+  }
+
+  return (
+    <div className={tema ? darkMode : lightMode}>
+      <header className={styles.container_header}>
+        <Image src={Logo} className={styles.logo} />
+        <button onClick={alterarTema}>{tema ? <BsSun /> : <BsMoon />}</button>
+      </header>
+      <div className={styles.topo}>
+        <h1>Be Stylish</h1>
+      </div>
+      <main className={styles.container_main}>
+        <div>
+          <h2>Welcome to Barber França</h2>
+          <h3>
+            Na nossa barbearia, contamos com profissionais altamente
+            qualificados, prontos para atender suas expectativas com excelência
+            e oferecer uma experiência única.
+          </h3>
+          <p>
+            Desde 2010, nossa barbearia tem se dedicado a transformar
+            expectativas em realidade. Com uma equipe de profissionais
+            qualificados e apaixonados pelo que fazem, oferecemos um atendimento
+            personalizado que visa não só a transformação do visual, mas uma
+            experiência única em cada visita. Ao longo dos anos, temos orgulho
+            de conquistar a confiança de nossos clientes, sempre focados em
+            entregar o melhor serviço e um cuidado especial em cada detalhe
+          </p>
         </div>
+        <Image className={styles.sign} src={Sign} />
       </main>
       <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <p>
+          Desenvolvido por Guilherme França, como parte do meu aprendizado sobre
+          useState Hook
+        </p>
+        <p>finalidade única e exclusiva para aprendizado</p>
       </footer>
     </div>
   );
